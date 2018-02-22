@@ -1,0 +1,204 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.0
+-- Dumped by pg_dump version 10.0
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: postgres; Type: COMMENT; Schema: -; Owner: postgres
+--
+
+COMMENT ON DATABASE postgres IS 'default administrative connection database';
+
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = true;
+
+--
+-- Name: criminal_records; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE criminal_records (
+    id integer NOT NULL,
+    name character varying(120) NOT NULL,
+    felony character varying(30) NOT NULL,
+    ssn character varying(11) NOT NULL,
+    home_address character varying(100) NOT NULL,
+    entry timestamp without time zone NOT NULL,
+    city character varying(100) NOT NULL,
+    status character varying(16) NOT NULL
+);
+
+
+ALTER TABLE criminal_records OWNER TO postgres;
+
+--
+-- Name: criminal_records_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE criminal_records_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE criminal_records_id_seq OWNER TO postgres;
+
+--
+-- Name: criminal_records_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE criminal_records_id_seq OWNED BY criminal_records.id;
+
+
+--
+-- Name: criminal_records id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY criminal_records ALTER COLUMN id SET DEFAULT nextval('criminal_records_id_seq'::regclass);
+
+
+--
+-- Data for Name: criminal_records; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY criminal_records (id, name, felony, ssn, home_address, entry, city, status) FROM stdin;
+1	Dennis Anderson	Perjury	127-76-6649	0040 William Mountain	1994-04-23 00:00:00	Laceyton, MD 87957-3844	missing
+2	Charles Young	Burglary	826-68-6932	53966 Christina Turnpike	2013-04-29 00:00:00	South Victorton, FM 80274	alive
+3	Jessica Barnes DDS	Larceny	536-77-1087	2689 Jason Rue Apt. 134	1973-12-10 00:00:00	Kathyville, MN 33932-8661	missing
+4	Jennifer James	Vehicular homicide	763-04-7701	568 Jackson Road	1994-10-26 00:00:00	Alisonburgh, AL 84935-0621	terminated
+5	Angela Ward	Check fraud	387-86-0707	9231 Jennifer Mews	2009-01-14 00:00:00	Port Paulafort, MN 19372	alive
+6	Dakota Williams IV	Animal cruelty	141-65-0949	2593 Bond Union Apt. 337	1987-07-16 00:00:00	Noahfort, AL 52681	terminated
+7	Joshua Hunter	Manslaughter	317-44-1645	8870 Chavez Vista	1993-11-13 00:00:00	Lake Louis, NJ 86444	terminated
+8	Sara Jones	Vehicular homicide	546-02-9781	48196 Eaton Coves	1982-06-22 00:00:00	North Gail, NJ 10894-8518	terminated
+9	Nicole Thomas	Manslaughter	305-06-7888	463 Stevens Corners	2011-07-05 00:00:00	West Amber, FM 52212-9290	alive
+10	Mary Williamson	Animal cruelty	884-72-3081	38761 Catherine River Suite 566	1989-08-24 00:00:00	Lopezfurt, LA 32268-9503	terminated
+11	Troy Hart	Larceny	040-20-7506	43628 Diaz Summit Apt. 507	2002-09-09 00:00:00	Parksville, WI 51227-8562	missing
+12	Christopher Johnson	Larceny	623-15-5030	06065 Christopher Circles Suite 975	1994-03-04 00:00:00	Lake Tristanstad, VI 63080-2342	terminated
+13	Ashley White	Obstruction of justice	014-45-4683	777 Angel Mission	2015-11-11 00:00:00	Simonchester, TN 78775-3973	alive
+14	Matthew Anderson	Vehicular homicide	705-67-1201	09399 Ruth Parkways	2010-01-04 00:00:00	Blackside, AK 71548	missing
+15	Lisa Austin	Burglary	609-43-1851	8005 Thomas Ranch	2018-02-01 00:00:00	Laurenmouth, TN 15503	terminated
+16	Jennifer Lam	Obstruction of justice	211-06-3882	73133 Vang Parks	2006-11-04 00:00:00	Andreaburgh, SD 93141-9473	alive
+17	Jesus Velasquez	Obstruction of justice	727-86-1656	USNV Durham	1978-12-15 00:00:00	FPO AE 18087	terminated
+18	Andrew Vega	Manslaughter	091-21-9159	33140 King Keys Suite 356	1982-04-26 00:00:00	Parksbury, ND 54949-7714	terminated
+19	Joseph Reed	Check fraud	637-15-9412	68716 Desiree Drive Apt. 662	1981-05-20 00:00:00	Michaelfort, TX 72389-7005	terminated
+20	Wanda Salas	Arson	371-42-0829	663 Evans Stravenue	2002-12-15 00:00:00	North Tina, FL 33586-8712	missing
+21	Ryan Walters	Vehicular homicide	019-69-5320	25140 Kelly Points Apt. 638	2005-01-13 00:00:00	Port Jeremiahmouth, FL 94859	alive
+22	Michelle Watson	Vehicular homicide	792-75-1691	0661 Munoz Throughway Apt. 985	1974-09-01 00:00:00	New Conniemouth, AS 03231	missing
+23	Amanda Wood	Animal cruelty	874-50-0469	1720 Sarah Rapid	2009-07-10 00:00:00	Reidbury, VI 66429-2851	alive
+24	Richard Daniels	Animal cruelty	313-62-5136	871 Brenda Inlet Apt. 468	1985-05-16 00:00:00	Lawsonfurt, CO 73997	terminated
+25	Robin Harris	Obstruction of justice	226-62-3652	07467 Tyler Vista Suite 847	1999-11-30 00:00:00	Lake Sarahside, FL 08592	missing
+26	Jessica Daniels	Larceny	751-86-1570	28940 John Stream	1982-04-05 00:00:00	Ariasport, WY 03572	missing
+27	Michael Perez	Perjury	046-39-6398	USS Smith	1978-01-04 00:00:00	FPO AE 50346	alive
+28	Peggy Williams	Larceny	222-83-5133	2923 Sarah Causeway	1999-08-30 00:00:00	Vegachester, PW 64120	missing
+29	Kimberly Forbes	Arson	633-20-6366	676 Parsons Flat	2005-03-15 00:00:00	Smithland, NM 04212-1120	terminated
+30	Jeanette Rangel	Tax evasion	367-74-4861	9210 John Junction	1973-12-12 00:00:00	West Anthony, NM 15735-6715	missing
+31	Miss Susan Lowe	Larceny	865-92-8606	250 Diana Orchard Suite 528	1988-05-23 00:00:00	New Christopher, MT 65725-2269	alive
+32	Kathryn Williams	Burglary	848-76-2461	10199 Drake Loop Suite 883	1979-04-30 00:00:00	Port Johnny, WA 73949	alive
+33	Stephen Brennan	Vehicular homicide	733-86-9480	PSC 3701, Box 1483	2018-02-26 00:00:00	APO AE 92979	missing
+34	Robert Miller	Arson	492-09-5079	8816 Garcia Unions	2016-06-03 00:00:00	Lake Melissa, UT 05214	missing
+35	Jerry Norris	Manslaughter	260-37-1527	74473 Kimberly View Apt. 627	1998-03-19 00:00:00	Kirkshire, SD 20019	missing
+36	John Bailey	Animal cruelty	515-96-7742	Unit 4884 Box 2662	1990-07-14 00:00:00	DPO AP 57726-5735	missing
+37	Charles Rice	Burglary	651-70-8124	74382 Aaron Flats	2012-02-15 00:00:00	Greenmouth, WI 64249	terminated
+38	Jason Shaw	Burglary	711-90-0779	09205 Sandra Freeway Apt. 228	2005-08-09 00:00:00	North Jennifer, HI 11782-1446	missing
+39	Tina Johnson	Manslaughter	428-94-0391	PSC 7517, Box 4936	1994-06-19 00:00:00	APO AA 75025	alive
+40	Stephen Adkins	Vehicular homicide	355-86-9406	242 Gibson Roads Apt. 421	1985-08-29 00:00:00	Michaelfurt, RI 00204-9110	missing
+41	Charlene Evans	Animal cruelty	766-32-9729	60657 Jones Plains Suite 677	1982-10-24 00:00:00	South Tracy, DC 51128	missing
+42	Robert Bradford	Manslaughter	354-12-8082	81145 Monica Route	2004-06-21 00:00:00	Littleside, MT 89836	alive
+43	Margaret Rodgers	Larceny	179-13-5611	194 Bowman Field Apt. 920	2005-04-20 00:00:00	Emilymouth, MS 73751-3226	missing
+44	Devin Lopez	Perjury	612-29-8093	126 Donna Unions	2003-05-08 00:00:00	North Blakechester, VA 38680-6852	terminated
+45	Danielle Russell	Obstruction of justice	084-67-0531	4347 Sean Isle Apt. 544	1971-04-27 00:00:00	Leahmouth, NH 28016-3177	terminated
+46	Angela Graham	Larceny	130-15-7505	9518 Spencer Prairie	1976-05-16 00:00:00	Delacruzhaven, ID 34279-3914	terminated
+47	William Pittman	Animal cruelty	214-42-2359	4158 Courtney Station Apt. 369	1972-11-16 00:00:00	Brentton, KS 76160-4857	alive
+48	Jesse Lucas	Check fraud	433-38-9080	8721 Perry Run Suite 583	2008-09-26 00:00:00	East Ronaldmouth, NH 16491-8992	missing
+49	Jay Garcia	Burglary	199-57-3907	9403 Sullivan Throughway Suite 904	2008-06-06 00:00:00	Muellershire, MS 72875-8149	missing
+50	Jessica Mccann	Larceny	501-83-1092	715 Jonathan Highway Suite 956	2002-10-30 00:00:00	Thompsonton, MD 46962-2623	missing
+51	Edward Anderson	Vehicular homicide	351-10-7002	0993 Warren Wells	1986-02-06 00:00:00	Anthonyborough, MH 19047-9065	alive
+52	James Jennings	Perjury	896-23-8808	73762 Janet Islands Suite 218	2012-02-24 00:00:00	Wattsmouth, NC 91617-5133	missing
+53	Karen Miller	Animal cruelty	745-46-2224	271 Andrew Track Apt. 709	1990-03-02 00:00:00	Charlesfort, MT 75056-0098	missing
+54	Marie Norris	Manslaughter	401-32-4244	31080 Larson Centers	2006-05-28 00:00:00	Michaelfurt, IA 93217-2125	alive
+55	James Riggs	Obstruction of justice	430-79-0956	USNV Gomez	2008-06-05 00:00:00	FPO AA 16060	terminated
+56	Edward Leonard	Perjury	394-34-4283	8573 Rebecca Road Suite 531	2012-09-22 00:00:00	South Valerieville, AZ 99526-7283	alive
+57	Jeanette Nguyen	Perjury	672-72-0441	6516 Zachary Viaduct	2014-01-05 00:00:00	South Daniel, DE 62826	alive
+58	John Anderson	Larceny	171-10-5215	60793 Hill Parks	2005-04-27 00:00:00	Brownside, MA 04790-9184	missing
+59	Miss Rachel Contreras	Check fraud	480-94-3099	514 Jessica Burg	1983-08-04 00:00:00	Josephland, IA 08402	alive
+60	Michael Fuller	Arson	213-95-5726	0865 Meza Drive Apt. 757	1988-06-22 00:00:00	Lake Keithberg, NJ 11744-8334	terminated
+61	Amanda Ali	Burglary	792-60-4334	1117 Ellis Island	1982-05-20 00:00:00	Lake Kevinport, DE 38227	missing
+62	Madison Miller	Perjury	541-30-5954	1445 Duarte Land Apt. 800	1986-02-25 00:00:00	Port Julian, RI 54724	terminated
+63	Eric Hanson	Tax evasion	128-93-9026	4029 Elizabeth Lane	1990-07-02 00:00:00	Lambberg, SD 75288	missing
+64	Anthony Yu	Vehicular homicide	890-77-7110	USS Fisher	2004-02-22 00:00:00	FPO AP 04880-8103	missing
+65	Shawn Wilson	Manslaughter	395-38-3818	5077 Petersen Vista Suite 328	2000-11-19 00:00:00	North Lisa, NC 30760	alive
+66	Johnathan Green	Check fraud	209-85-4165	USS Rodriguez	1978-02-21 00:00:00	FPO AA 26136-0874	missing
+67	Tina Hall	Perjury	688-40-4060	2725 Flores Fall Apt. 974	2011-06-28 00:00:00	South Carlosburgh, VT 31410	missing
+68	Alan Mitchell	Larceny	785-19-3195	1552 Erik Course	1993-07-14 00:00:00	Port Aaron, AZ 89538-9978	missing
+69	Connie Barnett	Perjury	829-34-5923	PSC 6459, Box 7068	1988-08-27 00:00:00	APO AA 76080-6242	missing
+70	Mary Davis	Perjury	649-03-5234	77176 Barron Inlet	1982-04-28 00:00:00	Port Amybury, DC 84644	missing
+71	Dr. Marilyn Burns	Animal cruelty	614-95-3135	3663 Ramirez Mission	1984-01-22 00:00:00	New Ryan, ME 83651-7554	missing
+72	Stephanie Estes	Animal cruelty	187-01-6444	PSC 7393, Box 5468	1987-01-12 00:00:00	APO AA 88389	alive
+73	Sarah Anderson	Burglary	762-33-8093	53120 Gomez Path	1976-08-30 00:00:00	Gatesmouth, MP 13045	missing
+74	Michael Prince	Manslaughter	864-30-3576	30380 Singh Brook	1979-01-08 00:00:00	Sandraburgh, MT 93859	alive
+75	Martin Carrillo	Check fraud	538-49-1475	7498 Steven Stravenue Apt. 822	1987-04-22 00:00:00	Lawrenceberg, MI 17683-3750	missing
+76	Steven Torres	Tax evasion	251-54-4821	1646 Shaw Gardens	1977-07-20 00:00:00	Lake David, CO 84761	alive
+77	Elizabeth Mcdonald	Perjury	088-77-1462	41490 Downs Shoal	1998-08-25 00:00:00	East Brittanyberg, NM 28564-2219	alive
+78	Kevin Valentine	Obstruction of justice	894-91-3249	16730 Heather Club	2005-07-16 00:00:00	Maryton, FL 29966-4014	missing
+79	Christopher Smith	Arson	583-35-8378	93401 Mitchell Port Suite 846	1999-05-25 00:00:00	Lake Jackmouth, ND 29277-5269	alive
+80	Anthony Fritz	Vehicular homicide	319-29-1492	USCGC Caldwell	1988-02-02 00:00:00	FPO AE 75604	terminated
+81	Mary Wheeler	Arson	765-70-3627	2553 Shawn Islands	1976-08-20 00:00:00	Lake Bethhaven, WV 84130-6038	alive
+82	Jordan Jones	Manslaughter	877-13-5108	04035 Michelle Divide Suite 214	2004-05-10 00:00:00	East Stephaniechester, SD 82706	missing
+83	Joseph Williams	Tax evasion	154-40-8799	550 Mark Heights Suite 670	2013-10-08 00:00:00	Lake Alex, WV 71707-3493	missing
+84	Arthur Dawson	Arson	635-27-5355	849 Damon Walks Apt. 545	1979-02-16 00:00:00	New Vanessaside, TN 38392	missing
+85	Patrick Morgan	Vehicular homicide	387-25-7055	PSC 4980, Box 9431	1973-09-08 00:00:00	APO AP 59882-8057	alive
+86	Megan Robles	Larceny	150-83-2373	00989 Cline Corner	2001-08-19 00:00:00	Lake Brian, MD 67089	alive
+87	Rebecca Allen	Burglary	509-42-7908	3607 Chase Village Suite 005	1986-02-22 00:00:00	New Mary, NV 14975-6799	terminated
+\.
+
+
+--
+-- Name: criminal_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('criminal_records_id_seq', 87, true);
+
+
+--
+-- Name: criminal_records criminal_records_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY criminal_records
+    ADD CONSTRAINT criminal_records_pk PRIMARY KEY (id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
